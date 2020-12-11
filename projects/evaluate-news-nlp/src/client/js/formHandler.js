@@ -14,3 +14,8 @@ function handleSubmit(event) {
 }
 
 export { handleSubmit }
+
+/*// take the url as an input from the client and use meaningcloud api
+// with url as parameter to analize that.
+"https://api.meaningcloud.com/sentiment-2.1?key=<<YOUR OWN KEY>>&of=json&txt=<<YOUR OWN TXT>><MODEL>>&lang=en"
+*/
