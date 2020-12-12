@@ -9,9 +9,8 @@ module.exports = {
     output: {
         libraryTarget: "var",
         library: "Client"
-    }
+    },
     devtool: 'source-map',
-    stats: 'verbose',
     module: {
         rules: [
             {
@@ -21,7 +20,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ["style-loader", "css-loader", "sass-loader"]
+                use: [ "style-loader", "css-loader", "sass-loader"]
             }
         ]
     },

@@ -8,23 +8,33 @@ dotenv.config();
 var textapi = new meaningCloud({
    application_key: process.env.API_KEY
 });
+const data = {};
 
 const app = express()
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+//Here we are configuring express to use body-parser as middle-ware.
+// Cors for cross origin allowance
+app.use(cors());
 
 app.use(express.static('dist'))
 
 console.log(__dirname)
 
-app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
-})
-
-// designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
+const port = 8080;
+const server = app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
 })
 
-app.post('/test', function (req, res) {
-    res.send(textapi);
-    })
+app.get('/', function (req, res) {
+    //res.sendFile('dist/index.html')
+    res.sendFile(path.resolve('src/client/views/index.html'))
+})
+
+app.get('/test', function (req, res) {
+    res.send(data);
+})
